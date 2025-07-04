@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['super_admin', 'admin', 'mitra'])->default('mitra');
             $table->enum('member_status', ['non_member', 'member'])->default('non_member');
-
         });
     }
 

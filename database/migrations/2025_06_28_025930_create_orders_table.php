@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('payment_method', ['cash', 'transfer', 'qris']);
             $table->enum('status', ['pending', 'diterima', 'dikirim', 'selesai'])->default('pending');
             $table->string('payment_proof')->nullable();
-            $table->string('qris_url')->nullable()->after('payment_method');
+            $table->string('qris_url')->nullable();
             $table->timestamps();
         });
     }

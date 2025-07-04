@@ -21,7 +21,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:8',
         ]);
 
         User::create([
@@ -33,7 +33,7 @@ class AuthController extends Controller
         return redirect()->route('login.form')->with('success', 'Registrasi berhasil! Silakan login.');
     }
 
-    // tampilan buat login
+    // tampilan buat login user
     public function showLogin()
     {
         return view('auth.login');
