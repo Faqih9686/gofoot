@@ -242,10 +242,6 @@
     />
   </div>
   <div>
-    <label class="text-sm text-white">Lokasi</label>
-    <div class="w-full h-24 bg-white rounded mt-1">
-      <img src="https://via.placeholder.com/300x100?text=Map" alt="Map" class="w-full h-full object-cover rounded" />
-    </div>
   </div>
 </div>
 
@@ -455,20 +451,90 @@
 
     <!-- Penilaian -->
     <div class="relative" x-data="{ open: false }">
-      <button @click="open = !open" class="flex items-center space-x-1 font-semibold">
-        <span>Penilaian</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+  <button @click="open = !open" class="flex items-center space-x-1 font-semibold">
+    <span>Penilaian</span>
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="h-4 w-4 transition-transform duration-200"
+         :class="open ? 'rotate-180' : ''"
+         viewBox="0 0 20 20"
+         fill="currentColor">
+      <path fill-rule="evenodd"
+            d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+            clip-rule="evenodd" />
+    </svg>
+  </button>
+      <div x-show="open" @click.away="open = false" class="absolute mt-2 bg-white border rounded shadow w-40 z-10">
+    <!-- Bintang 5 -->
+    <div x-data="{ subOpen: false }" class="relative group">
+      <button @click="subOpen = !subOpen" class="flex justify-between w-full px-4 py-2 hover:bg-gray-100">
+        <span>Bintang 5</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" :class="{'rotate-90': subOpen}" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.21 5.23a.75.75 0 011.06-.02l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 11-1.06-1.06L10.94 10 7.21 6.27a.75.75 0 01-.02-1.06z" clip-rule="evenodd" />
         </svg>
       </button>
-      <div x-show="open" @click.away="open = false" class="absolute mt-2 bg-white border rounded shadow w-40">
-        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Bintang 5</a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Bintang 4</a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Bintang 3</a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Bintang 2</a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Bintang 1</a>
+      <div x-show="subOpen" @click.away="subOpen = false" class="absolute left-full top-0 mt-0 ml-1 w-40 bg-white border rounded shadow">
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi A</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi B</a>
       </div>
     </div>
+
+    <!-- Bintang 4 -->
+    <div x-data="{ subOpen: false }" class="relative group">
+      <button @click="subOpen = !subOpen" class="flex justify-between w-full px-4 py-2 hover:bg-gray-100">
+        <span>Bintang 4</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" :class="{'rotate-90': subOpen}" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.21 5.23a.75.75 0 011.06-.02l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 11-1.06-1.06L10.94 10 7.21 6.27a.75.75 0 01-.02-1.06z" clip-rule="evenodd" />
+        </svg>
+      </button>
+      <div x-show="subOpen" @click.away="subOpen = false" class="absolute left-full top-0 mt-0 ml-1 w-40 bg-white border rounded shadow">
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi C</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi D</a>
+      </div>
+    </div>
+
+    <!-- Bintang 3 -->
+    <div x-data="{ subOpen: false }" class="relative group">
+      <button @click="subOpen = !subOpen" class="flex justify-between w-full px-4 py-2 hover:bg-gray-100">
+        <span>Bintang 3</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" :class="{'rotate-90': subOpen}" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.21 5.23a.75.75 0 011.06-.02l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 11-1.06-1.06L10.94 10 7.21 6.27a.75.75 0 01-.02-1.06z" clip-rule="evenodd" />
+        </svg>
+      </button>
+      <div x-show="subOpen" @click.away="subOpen = false" class="absolute left-full top-0 mt-0 ml-1 w-40 bg-white border rounded shadow">
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi C</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi D</a>
+      </div>
+    </div>
+
+    <!-- Bintang 2 -->
+    <div x-data="{ subOpen: false }" class="relative group">
+      <button @click="subOpen = !subOpen" class="flex justify-between w-full px-4 py-2 hover:bg-gray-100">
+        <span>Bintang 2</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" :class="{'rotate-90': subOpen}" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.21 5.23a.75.75 0 011.06-.02l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 11-1.06-1.06L10.94 10 7.21 6.27a.75.75 0 01-.02-1.06z" clip-rule="evenodd" />
+        </svg>
+      </button>
+      <div x-show="subOpen" @click.away="subOpen = false" class="absolute left-full top-0 mt-0 ml-1 w-40 bg-white border rounded shadow">
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi C</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi D</a>
+      </div>
+    </div>
+
+    <!-- Bintang 1 -->
+    <div x-data="{ subOpen: false }" class="relative group">
+      <button @click="subOpen = !subOpen" class="flex justify-between w-full px-4 py-2 hover:bg-gray-100">
+        <span>Bintang 1</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" :class="{'rotate-90': subOpen}" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.21 5.23a.75.75 0 011.06-.02l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 11-1.06-1.06L10.94 10 7.21 6.27a.75.75 0 01-.02-1.06z" clip-rule="evenodd" />
+        </svg>
+      </button>
+      <div x-show="subOpen" @click.away="subOpen = false" class="absolute left-full top-0 mt-0 ml-1 w-40 bg-white border rounded shadow">
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi C</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Opsi D</a>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Harga Dropdown with Submenus -->
 <div class="relative" x-data="{ open: false }">
