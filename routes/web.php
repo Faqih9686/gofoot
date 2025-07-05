@@ -21,12 +21,13 @@ use App\Http\Controllers\OrderController;
 Route::get('/', function () {
     return view('Customer.index');
 });
-Route::get('/', function () {
-    return view('Customer');
-})->name('Customer');
-Route::get('/menu/nasi-goreng', function () {
-    return view('menu.detail');
+Route::get('/menu/{slug}', function ($slug) {
+    return view('menu.detail', ['slug' => $slug]);
 })->name('menu.show');
+Route::get('/pengaturan', function() {
+    return view('pengaturan.setting');
+})->name('pengaturan');
+
 // Register
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
