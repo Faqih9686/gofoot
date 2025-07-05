@@ -21,7 +21,9 @@ use App\Http\Controllers\OrderController;
 Route::get('/', function () {
     return view('Customer.index');
 });
-
+Route::get('/menu/nasi-goreng', function () {
+    return view('menu.detail');
+})->name('menu.show');
 // Register
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
