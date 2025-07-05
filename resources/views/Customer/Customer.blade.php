@@ -455,7 +455,7 @@
           fill="#35CD81"
         />
       </svg>
-      <span class="text-xs text-gray-700 whitespace-nowrap">Madinah</span>
+      <span class="text-xs text-green-500 whitespace-nowrap">Madinah</span>
     </div>
   </div>
   <div class="text-center">
@@ -519,7 +519,7 @@
           fill="#35CD81"
         />
       </svg>
-      <span class="text-xs text-gray-700 whitespace-nowrap">Jeddah</span>
+      <span class="text-xs text-green-500 whitespace-nowrap">Jeddah</span>
     </div>
   </div>
   <div class="text-center">
@@ -583,7 +583,7 @@
           fill="#35CD81"
         />
       </svg>
-      <span class="text-xs text-gray-700 whitespace-nowrap">Mekkah</span>
+      <span class="text-xs text-green-500 whitespace-nowrap">Mekkah</span>
     </div>
   </div>
   <div class="text-center">
