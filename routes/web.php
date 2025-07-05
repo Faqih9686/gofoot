@@ -21,6 +21,9 @@ use App\Http\Controllers\OrderController;
 Route::get('/', function () {
     return view('Customer.index');
 });
+Route::get('/', function () {
+    return view('Customer');
+})->name('Customer');
 Route::get('/menu/nasi-goreng', function () {
     return view('menu.detail');
 })->name('menu.show');
