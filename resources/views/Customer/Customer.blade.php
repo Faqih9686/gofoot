@@ -363,176 +363,265 @@
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-    <!-- Card 1 -->
-    <div class="bg-white rounded-2xl shadow-md p-4">
-  <div class="mb-4">
+     <!-- Card 1 -->
+<div class="bg-white rounded-2xl shadow-md p-4">
+  <div class="mb-4 relative">
     <a href="{{ route('menu.show', ['slug' => 'nasi-goreng']) }}">
-      <img src="{{ asset('images/makanan 1.jpg') }}" alt="Sate Madura" class="rounded-xl w-full h-40 object-cover hover:opacity-80 transition">
+      <img
+        src="{{ asset('images/makanan 1.jpg') }}"
+        alt="Nasi Goreng"
+        class="rounded-xl w-full h-40 object-cover hover:opacity-80 transition"
+      />
+       <!-- Lokasi persis sejajar ikon dan teks -->
+      <div
+        class="absolute right-2 bottom-2 flex items-center gap-1 bg-white/80 backdrop-blur-md px-2 py-1 rounded-full shadow"
+      >
+        <svg
+          width="16"
+          height="18"
+          viewBox="0 0 16 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 0C10.1217 0 12.1566 0.842857 13.6569 2.34315C15.1571 3.84345 16 5.87829 16 8.00003C16 10.7325 14.5102 12.9689 12.9404 14.5734C12.1562 15.3663 11.3004 16.0852 10.384 16.7209L10.0053 16.9787L9.82756 17.0969L9.49244 17.3103L9.19378 17.4925L8.824 17.7076C8.57301 17.8509 8.289 17.9262 8 17.9262C7.711 17.9262 7.42699 17.8509 7.176 17.7076L6.80622 17.4925L6.344 17.2081L6.17333 17.0969L5.80889 16.8543C4.82029 16.1854 3.89947 15.4215 3.05956 14.5734C1.48978 12.968 0 10.7325 0 8.00003C0 5.87829 0.842855 3.84345 2.34315 2.34315C3.84344 0.842857 5.87827 0 8 0ZM8 5.33335C7.64981 5.33335 7.30305 5.40233 6.97951 5.53634C6.65598 5.67035 6.362 5.86678 6.11438 6.1144C5.86676 6.36203 5.67033 6.656 5.53632 6.97953C5.40231 7.30307 5.33333 7.64983 5.33333 8.00003C5.33333 8.35022 5.40231 8.69698 5.53632 9.02052C5.67033 9.34406 5.86676 9.63803 6.11438 9.88565C6.362 10.1333 6.65598 10.3297 6.97951 10.4637C7.30305 10.5977 7.64981 10.6667 8 10.6667C8.70724 10.6667 9.38552 10.3858 9.88562 9.88565C10.3857 9.38555 10.6667 8.70727 10.6667 8.00003C10.6667 7.29278 10.3857 6.6145 9.88562 6.1144C9.38552 5.6143 8.70724 5.33335 8 5.33335Z"
+            fill="#35CD81"
+          />
+        </svg>
+        <span class="text-xs text-green-500 whitespace-nowrap">Madinah</span>
+      </div>
     </a>
   </div>
-      <div class="text-center">
-        <h3 class="text-lg font-bold">Nasi Goreng</h3>
-        <p class="text-green-600 font-bold text-md mb-1">Rp.20.000</p>
-        <div class="flex items-center justify-center text-sm text-gray-500 mb-1">
-          <span class="text-yellow-400 text-base mr-1">★</span>
-          <span class="font-semibold mr-1">4.6</span>
-          <span class="text-gray-400">| Terjual 80</span>
-        </div>
-        <div class="mt-4 flex justify-between items-center">
-          <button class="bg-green-400 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition w-full mr-2
-                         active:bg-white active:text-green-500">
-            Pesan Sekarang
-          </button>
-          <button
- class="bg-green-400 text-white text-xl p-1 rounded shadow-md transition hover:bg-green-600 active:bg-white active:text-green-500 active:scale-95"
->
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="text-white"
-  >
-    <path
-      d="M21.0277 11.475L21.3138 9.732C21.5005 8.5917 21.5938 8.0226 21.2944 7.6488C20.9959 7.275 20.4461 7.275 19.3477 7.275H4.13941C3.04094 7.275 2.4912 7.275 2.19273 7.6488C1.89325 8.0226 1.9876 8.5917 2.17325 9.732L3.40812 17.271C3.81736 19.77 4.02146 21.0184 4.85736 21.7597C5.69224 22.5 6.89634 22.5 9.30456 22.5H11.7435M13.7948 18.3H22M17.8974 22.5V14.1M17.3846 7.275C17.3846 5.74337 16.7903 4.27448 15.7324 3.19146C14.6745 2.10844 13.2396 1.5 11.7435 1.5C10.2474 1.5 8.81262 2.10844 7.75472 3.19146C6.69682 4.27448 6.10249 5.74337 6.10249 7.275"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-  </svg>
-</button>
-        </div>
-      </div>
+
+  <div class="text-center">
+    <h3 class="text-lg font-bold">Nasi Goreng</h3>
+    <p class="text-green-600 font-bold text-md mb-1">Rp.20.000</p>
+    <div class="flex items-center justify-center text-sm text-gray-500 mb-1">
+      <span class="text-yellow-400 text-base mr-1">★</span>
+      <span class="font-semibold mr-1">4.6</span>
+      <span class="text-gray-400">| Terjual 80</span>
     </div>
+    <div class="mt-4 flex justify-between items-center">
+      <button
+        class="bg-green-400 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition w-full mr-2 active:bg-white active:text-green-500"
+      >
+        Pesan Sekarang
+      </button>
+      <button
+        class="bg-green-400 text-white text-xl p-1 rounded shadow-md transition hover:bg-green-600 active:bg-white active:text-green-500 active:scale-95"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="text-white"
+        >
+          <path
+            d="M21.0277 11.475L21.3138 9.732C21.5005 8.5917 21.5938 8.0226 21.2944 7.6488C20.9959 7.275 20.4461 7.275 19.3477 7.275H4.13941C3.04094 7.275 2.4912 7.275 2.19273 7.6488C1.89325 8.0226 1.9876 8.5917 2.17325 9.732L3.40812 17.271C3.81736 19.77 4.02146 21.0184 4.85736 21.7597C5.69224 22.5 6.89634 22.5 9.30456 22.5H11.7435M13.7948 18.3H22M17.8974 22.5V14.1M17.3846 7.275C17.3846 5.74337 16.7903 4.27448 15.7324 3.19146C14.6745 2.10844 13.2396 1.5 11.7435 1.5C10.2474 1.5 8.81262 2.10844 7.75472 3.19146C6.69682 4.27448 6.10249 5.74337 6.10249 7.275"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
 
     <!-- Card 2 -->
-    <div class="bg-white rounded-2xl shadow-md p-4">
-      <div class="mb-4">
-        <img src="images/makanan 2.jpg" alt="Nasi Kebuli" class="rounded-xl w-full h-40 object-cover">
-      </div>
-      <div class="text-center">
-        <h3 class="text-lg font-bold">Sate Madura</h3>
-        <p class="text-green-600 font-bold text-md mb-1">Rp.100.000</p>
-        <div class="flex items-center justify-center text-sm text-gray-500 mb-1">
-          <span class="text-yellow-400 text-base mr-1">★</span>
-          <span class="font-semibold mr-1">4.6</span>
-          <span class="text-gray-400">| Terjual 80</span>
-        </div>
-        <div class="mt-4 flex justify-between items-center">
-          <button class="bg-green-400 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition w-full mr-2
-                         active:bg-white active:text-green-500">
-            Pesan Sekarang
-          </button>
-          <button
- class="bg-green-400 text-white text-xl p-1 rounded shadow-md transition hover:bg-green-600 active:bg-white active:text-green-500 active:scale-95"
->
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="text-white"
-  >
-    <path
-      d="M21.0277 11.475L21.3138 9.732C21.5005 8.5917 21.5938 8.0226 21.2944 7.6488C20.9959 7.275 20.4461 7.275 19.3477 7.275H4.13941C3.04094 7.275 2.4912 7.275 2.19273 7.6488C1.89325 8.0226 1.9876 8.5917 2.17325 9.732L3.40812 17.271C3.81736 19.77 4.02146 21.0184 4.85736 21.7597C5.69224 22.5 6.89634 22.5 9.30456 22.5H11.7435M13.7948 18.3H22M17.8974 22.5V14.1M17.3846 7.275C17.3846 5.74337 16.7903 4.27448 15.7324 3.19146C14.6745 2.10844 13.2396 1.5 11.7435 1.5C10.2474 1.5 8.81262 2.10844 7.75472 3.19146C6.69682 4.27448 6.10249 5.74337 6.10249 7.275"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+<div class="bg-white rounded-2xl shadow-md p-4">
+  <div class="mb-4 relative">
+    <img
+      src="images/makanan 2.jpg"
+      alt="Sate Madura"
+      class="rounded-xl w-full h-40 object-cover"
     />
-  </svg>
-</button>
-        </div>
-      </div>
+    <!-- Ikon lokasi -->
+    <div
+      class="absolute right-2 bottom-2 flex items-center gap-1 bg-white/80 backdrop-blur-md px-2 py-1 rounded-full shadow"
+    >
+      <svg
+        width="16"
+        height="18"
+        viewBox="0 0 16 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 0C10.1217 0 12.1566 0.842857 13.6569 2.34315C15.1571 3.84345 16 5.87829 16 8.00003C16 10.7325 14.5102 12.9689 12.9404 14.5734C12.1562 15.3663 11.3004 16.0852 10.384 16.7209L10.0053 16.9787L9.82756 17.0969L9.49244 17.3103L9.19378 17.4925L8.824 17.7076C8.57301 17.8509 8.289 17.9262 8 17.9262C7.711 17.9262 7.42699 17.8509 7.176 17.7076L6.80622 17.4925L6.344 17.2081L6.17333 17.0969L5.80889 16.8543C4.82029 16.1854 3.89947 15.4215 3.05956 14.5734C1.48978 12.968 0 10.7325 0 8.00003C0 5.87829 0.842855 3.84345 2.34315 2.34315C3.84344 0.842857 5.87827 0 8 0ZM8 5.33335C7.64981 5.33335 7.30305 5.40233 6.97951 5.53634C6.65598 5.67035 6.362 5.86678 6.11438 6.1144C5.86676 6.36203 5.67033 6.656 5.53632 6.97953C5.40231 7.30307 5.33333 7.64983 5.33333 8.00003C5.33333 8.35022 5.40231 8.69698 5.53632 9.02052C5.67033 9.34406 5.86676 9.63803 6.11438 9.88565C6.362 10.1333 6.65598 10.3297 6.97951 10.4637C7.30305 10.5977 7.64981 10.6667 8 10.6667C8.70724 10.6667 9.38552 10.3858 9.88562 9.88565C10.3857 9.38555 10.6667 8.70727 10.6667 8.00003C10.6667 7.29278 10.3857 6.6145 9.88562 6.1144C9.38552 5.6143 8.70724 5.33335 8 5.33335Z"
+          fill="#35CD81"
+        />
+      </svg>
+      <span class="text-xs text-gray-700 whitespace-nowrap">Madinah</span>
     </div>
+  </div>
+  <div class="text-center">
+    <h3 class="text-lg font-bold">Sate Madura</h3>
+    <p class="text-green-600 font-bold text-md mb-1">Rp.100.000</p>
+    <div class="flex items-center justify-center text-sm text-gray-500 mb-1">
+      <span class="text-yellow-400 text-base mr-1">★</span>
+      <span class="font-semibold mr-1">4.6</span>
+      <span class="text-gray-400">| Terjual 80</span>
+    </div>
+    <div class="mt-4 flex justify-between items-center">
+      <button
+        class="bg-green-400 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition w-full mr-2 active:bg-white active:text-green-500"
+      >
+        Pesan Sekarang
+      </button>
+      <button
+        class="bg-green-400 text-white text-xl p-1 rounded shadow-md transition hover:bg-green-600 active:bg-white active:text-green-500 active:scale-95"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21.0277 11.475L21.3138 9.732C21.5005 8.5917 21.5938 8.0226 21.2944 7.6488C20.9959 7.275 20.4461 7.275 19.3477 7.275H4.13941C3.04094 7.275 2.4912 7.275 2.19273 7.6488C1.89325 8.0226 1.9876 8.5917 2.17325 9.732L3.40812 17.271C3.81736 19.77 4.02146 21.0184 4.85736 21.7597C5.69224 22.5 6.89634 22.5 9.30456 22.5H11.7435M13.7948 18.3H22M17.8974 22.5V14.1M17.3846 7.275C17.3846 5.74337 16.7903 4.27448 15.7324 3.19146C14.6745 2.10844 13.2396 1.5 11.7435 1.5C10.2474 1.5 8.81262 2.10844 7.75472 3.19146C6.69682 4.27448 6.10249 5.74337 6.10249 7.275"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
 
     <!-- Card 3 -->
-    <div class="bg-white rounded-2xl shadow-md p-4">
-      <div class="mb-4">
-        <img src="images/makanan 3.jpg" alt="Roti Arab" class="rounded-xl w-full h-40 object-cover">
-      </div>
-      <div class="text-center">
-        <h3 class="text-lg font-bold">Nasi Uduk Jawa</h3>
-        <p class="text-green-600 font-bold text-md mb-1">Rp.15.000</p>
-        <div class="flex items-center justify-center text-sm text-gray-500 mb-1">
-          <span class="text-yellow-400 text-base mr-1">★</span>
-          <span class="font-semibold mr-1">4.6</span>
-          <span class="text-gray-400">| Terjual 50</span>
-        </div>
-        <div class="mt-4 flex justify-between items-center">
-          <button class="bg-green-400 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition w-full mr-2
-                         active:bg-white active:text-green-500">
-            Pesan Sekarang
-          </button>
-          <button
- class="bg-green-400 text-white text-xl p-1 rounded shadow-md transition hover:bg-green-600 active:bg-white active:text-green-500 active:scale-95"
->
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="text-white"
-  >
-    <path
-      d="M21.0277 11.475L21.3138 9.732C21.5005 8.5917 21.5938 8.0226 21.2944 7.6488C20.9959 7.275 20.4461 7.275 19.3477 7.275H4.13941C3.04094 7.275 2.4912 7.275 2.19273 7.6488C1.89325 8.0226 1.9876 8.5917 2.17325 9.732L3.40812 17.271C3.81736 19.77 4.02146 21.0184 4.85736 21.7597C5.69224 22.5 6.89634 22.5 9.30456 22.5H11.7435M13.7948 18.3H22M17.8974 22.5V14.1M17.3846 7.275C17.3846 5.74337 16.7903 4.27448 15.7324 3.19146C14.6745 2.10844 13.2396 1.5 11.7435 1.5C10.2474 1.5 8.81262 2.10844 7.75472 3.19146C6.69682 4.27448 6.10249 5.74337 6.10249 7.275"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+<div class="bg-white rounded-2xl shadow-md p-4">
+  <div class="mb-4 relative">
+    <img
+      src="images/makanan 3.jpg"
+      alt="Nasi Uduk Jawa"
+      class="rounded-xl w-full h-40 object-cover"
     />
-  </svg>
-</button>
-        </div>
-      </div>
+    <!-- Ikon lokasi -->
+    <div
+      class="absolute right-2 bottom-2 flex items-center gap-1 bg-white/80 backdrop-blur-md px-2 py-1 rounded-full shadow"
+    >
+      <svg
+        width="16"
+        height="18"
+        viewBox="0 0 16 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 0C10.1217 0 12.1566 0.842857 13.6569 2.34315C15.1571 3.84345 16 5.87829 16 8.00003C16 10.7325 14.5102 12.9689 12.9404 14.5734C12.1562 15.3663 11.3004 16.0852 10.384 16.7209L10.0053 16.9787L9.82756 17.0969L9.49244 17.3103L9.19378 17.4925L8.824 17.7076C8.57301 17.8509 8.289 17.9262 8 17.9262C7.711 17.9262 7.42699 17.8509 7.176 17.7076L6.80622 17.4925L6.344 17.2081L6.17333 17.0969L5.80889 16.8543C4.82029 16.1854 3.89947 15.4215 3.05956 14.5734C1.48978 12.968 0 10.7325 0 8.00003C0 5.87829 0.842855 3.84345 2.34315 2.34315C3.84344 0.842857 5.87827 0 8 0ZM8 5.33335C7.64981 5.33335 7.30305 5.40233 6.97951 5.53634C6.65598 5.67035 6.362 5.86678 6.11438 6.1144C5.86676 6.36203 5.67033 6.656 5.53632 6.97953C5.40231 7.30307 5.33333 7.64983 5.33333 8.00003C5.33333 8.35022 5.40231 8.69698 5.53632 9.02052C5.67033 9.34406 5.86676 9.63803 6.11438 9.88565C6.362 10.1333 6.65598 10.3297 6.97951 10.4637C7.30305 10.5977 7.64981 10.6667 8 10.6667C8.70724 10.6667 9.38552 10.3858 9.88562 9.88565C10.3857 9.38555 10.6667 8.70727 10.6667 8.00003C10.6667 7.29278 10.3857 6.6145 9.88562 6.1144C9.38552 5.6143 8.70724 5.33335 8 5.33335Z"
+          fill="#35CD81"
+        />
+      </svg>
+      <span class="text-xs text-gray-700 whitespace-nowrap">Jeddah</span>
     </div>
+  </div>
+  <div class="text-center">
+    <h3 class="text-lg font-bold">Nasi Uduk Jawa</h3>
+    <p class="text-green-600 font-bold text-md mb-1">Rp.15.000</p>
+    <div class="flex items-center justify-center text-sm text-gray-500 mb-1">
+      <span class="text-yellow-400 text-base mr-1">★</span>
+      <span class="font-semibold mr-1">4.6</span>
+      <span class="text-gray-400">| Terjual 50</span>
+    </div>
+    <div class="mt-4 flex justify-between items-center">
+      <button
+        class="bg-green-400 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition w-full mr-2 active:bg-white active:text-green-500"
+      >
+        Pesan Sekarang
+      </button>
+      <button
+        class="bg-green-400 text-white text-xl p-1 rounded shadow-md transition hover:bg-green-600 active:bg-white active:text-green-500 active:scale-95"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21.0277 11.475L21.3138 9.732C21.5005 8.5917 21.5938 8.0226 21.2944 7.6488C20.9959 7.275 20.4461 7.275 19.3477 7.275H4.13941C3.04094 7.275 2.4912 7.275 2.19273 7.6488C1.89325 8.0226 1.9876 8.5917 2.17325 9.732L3.40812 17.271C3.81736 19.77 4.02146 21.0184 4.85736 21.7597C5.69224 22.5 6.89634 22.5 9.30456 22.5H11.7435M13.7948 18.3H22M17.8974 22.5V14.1M17.3846 7.275C17.3846 5.74337 16.7903 4.27448 15.7324 3.19146C14.6745 2.10844 13.2396 1.5 11.7435 1.5C10.2474 1.5 8.81262 2.10844 7.75472 3.19146C6.69682 4.27448 6.10249 5.74337 6.10249 7.275"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
 
-    <!-- Card 4 -->
-    <div class="bg-white rounded-2xl shadow-md p-4">
-      <div class="mb-4">
-        <img src="images/makanan 4.jpg" alt="Ayam Bakar" class="rounded-xl w-full h-40 object-cover">
-      </div>
-      <div class="text-center">
-        <h3 class="text-lg font-bold">Sayur Kangkung</h3>
-        <p class="text-green-600 font-bold text-md mb-1">Rp.20.000</p>
-        <div class="flex items-center justify-center text-sm text-gray-500 mb-1">
-          <span class="text-yellow-400 text-base mr-1">★</span>
-          <span class="font-semibold mr-1">4.6</span>
-          <span class="text-gray-400">| Terjual 90</span>
-        </div>
-        <div class="mt-4 flex justify-between items-center">
-          <button class="bg-green-400 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition w-full mr-2
-                         active:bg-white active:text-green-500">
-                          Pesan Sekarang
-         </button>
-          <button
- class="bg-green-400 text-white text-xl p-1 rounded shadow-md transition hover:bg-green-600 active:bg-white active:text-green-500 active:scale-95"
->
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="text-white"
-  >
-    <path
-      d="M21.0277 11.475L21.3138 9.732C21.5005 8.5917 21.5938 8.0226 21.2944 7.6488C20.9959 7.275 20.4461 7.275 19.3477 7.275H4.13941C3.04094 7.275 2.4912 7.275 2.19273 7.6488C1.89325 8.0226 1.9876 8.5917 2.17325 9.732L3.40812 17.271C3.81736 19.77 4.02146 21.0184 4.85736 21.7597C5.69224 22.5 6.89634 22.5 9.30456 22.5H11.7435M13.7948 18.3H22M17.8974 22.5V14.1M17.3846 7.275C17.3846 5.74337 16.7903 4.27448 15.7324 3.19146C14.6745 2.10844 13.2396 1.5 11.7435 1.5C10.2474 1.5 8.81262 2.10844 7.75472 3.19146C6.69682 4.27448 6.10249 5.74337 6.10249 7.275"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+<!-- Card 4 -->
+<div class="bg-white rounded-2xl shadow-md p-4">
+  <div class="mb-4 relative">
+    <img
+      src="images/makanan 4.jpg"
+      alt="Sayur Kangkung"
+      class="rounded-xl w-full h-40 object-cover"
     />
-  </svg>
-</button>
-        </div>
-      </div>
+    <!-- Ikon lokasi -->
+    <div
+      class="absolute right-2 bottom-2 flex items-center gap-1 bg-white/80 backdrop-blur-md px-2 py-1 rounded-full shadow"
+    >
+      <svg
+        width="16"
+        height="18"
+        viewBox="0 0 16 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 0C10.1217 0 12.1566 0.842857 13.6569 2.34315C15.1571 3.84345 16 5.87829 16 8.00003C16 10.7325 14.5102 12.9689 12.9404 14.5734C12.1562 15.3663 11.3004 16.0852 10.384 16.7209L10.0053 16.9787L9.82756 17.0969L9.49244 17.3103L9.19378 17.4925L8.824 17.7076C8.57301 17.8509 8.289 17.9262 8 17.9262C7.711 17.9262 7.42699 17.8509 7.176 17.7076L6.80622 17.4925L6.344 17.2081L6.17333 17.0969L5.80889 16.8543C4.82029 16.1854 3.89947 15.4215 3.05956 14.5734C1.48978 12.968 0 10.7325 0 8.00003C0 5.87829 0.842855 3.84345 2.34315 2.34315C3.84344 0.842857 5.87827 0 8 0ZM8 5.33335C7.64981 5.33335 7.30305 5.40233 6.97951 5.53634C6.65598 5.67035 6.362 5.86678 6.11438 6.1144C5.86676 6.36203 5.67033 6.656 5.53632 6.97953C5.40231 7.30307 5.33333 7.64983 5.33333 8.00003C5.33333 8.35022 5.40231 8.69698 5.53632 9.02052C5.67033 9.34406 5.86676 9.63803 6.11438 9.88565C6.362 10.1333 6.65598 10.3297 6.97951 10.4637C7.30305 10.5977 7.64981 10.6667 8 10.6667C8.70724 10.6667 9.38552 10.3858 9.88562 9.88565C10.3857 9.38555 10.6667 8.70727 10.6667 8.00003C10.6667 7.29278 10.3857 6.6145 9.88562 6.1144C9.38552 5.6143 8.70724 5.33335 8 5.33335Z"
+          fill="#35CD81"
+        />
+      </svg>
+      <span class="text-xs text-gray-700 whitespace-nowrap">Mekkah</span>
     </div>
-    
+  </div>
+  <div class="text-center">
+    <h3 class="text-lg font-bold">Sayur Kangkung</h3>
+    <p class="text-green-600 font-bold text-md mb-1">Rp.20.000</p>
+    <div class="flex items-center justify-center text-sm text-gray-500 mb-1">
+      <span class="text-yellow-400 text-base mr-1">★</span>
+      <span class="font-semibold mr-1">4.6</span>
+      <span class="text-gray-400">| Terjual 90</span>
+    </div>
+    <div class="mt-4 flex justify-between items-center">
+      <button
+        class="bg-green-400 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition w-full mr-2 active:bg-white active:text-green-500"
+      >
+        Pesan Sekarang
+      </button>
+      <button
+        class="bg-green-400 text-white text-xl p-1 rounded shadow-md transition hover:bg-green-600 active:bg-white active:text-green-500 active:scale-95"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21.0277 11.475L21.3138 9.732C21.5005 8.5917 21.5938 8.0226 21.2944 7.6488C20.9959 7.275 20.4461 7.275 19.3477 7.275H4.13941C3.04094 7.275 2.4912 7.275 2.19273 7.6488C1.89325 8.0226 1.9876 8.5917 2.17325 9.732L3.40812 17.271C3.81736 19.77 4.02146 21.0184 4.85736 21.7597C5.69224 22.5 6.89634 22.5 9.30456 22.5H11.7435M13.7948 18.3H22M17.8974 22.5V14.1M17.3846 7.275C17.3846 5.74337 16.7903 4.27448 15.7324 3.19146C14.6745 2.10844 13.2396 1.5 11.7435 1.5C10.2474 1.5 8.81262 2.10844 7.75472 3.19146C6.69682 4.27448 6.10249 5.74337 6.10249 7.275"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
 
   </div>
 </div>
