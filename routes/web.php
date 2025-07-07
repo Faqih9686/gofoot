@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,10 @@ Route::post('/orders/{id}/upload-proof', [OrderController::class, 'uploadProof']
 Route::middleware('auth')->group(function () {
     Route::post('/checkout', [OrderController::class, 'store'])->name('checkout');
 });
+
+// untuk API
+Route::get('/api/services/search', [ServiceController::class, 'search']);
+
 
 
 

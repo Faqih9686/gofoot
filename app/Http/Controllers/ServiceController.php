@@ -21,18 +21,38 @@ class ServiceController extends Controller
     {
         $query = Service::query();
 
+        // Filter berdasarkan lokasi
         if ($request->has('location')) {
             $query->where('location', 'like', '%' . $request->location . '%');
         }
 
+        // Filter berdasarkan kategori
         if ($request->has('category_id')) {
             $query->where('category_id', $request->category_id);
         }
 
+        // Filter berdasarkan minimal rating produk
         if ($request->has('rating')) {
-            $query->where('rating', '>=', $request->rating);
+            $query->where('rating', '>=', $request->rating); // Jika rating ada di tabel Service
         }
 
-        return $query->get();
+        // Sorting
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+
+            if ($sort === 'best_selling') {
+                $query->withCount('orderItems')
+                    ->orderByDesc('order_items_count');
+            } elseif ($sort === 'top_rated') {
+                $query->withAvg('reviews', 'rating')
+                    ->orderByDesc('reviews_avg_rating');
+            } elseif ($sort === 'price_asc') {
+                $query->orderBy('price', 'asc');
+            } elseif ($sort === 'price_desc') {
+                $query->orderBy('price', 'desc');
+            }
+        }
+
+        return response()->json($query->get());
     }
 }
