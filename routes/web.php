@@ -22,9 +22,13 @@ use App\Http\Controllers\ServiceController;
 Route::get('/', function () {
     return view('Customer.index');
 });
+
+//menu
 Route::get('/menu/{slug}', function ($slug) {
     return view('menu.detail', ['slug' => $slug]);
 })->name('menu.show');
+
+//pengaturan
 Route::get('/pengaturan', function() {
     return view('pengaturan.setting');
 })->name('pengaturan');
