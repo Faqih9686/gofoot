@@ -29,6 +29,20 @@ Route::get('/pengaturan', function() {
     return view('pengaturan.setting');
 })->name('pengaturan');
 
+//riwayat
+Route::get('/riwayat/akhir-akhir ini', function() {
+    return view('riwayat.akhir');
+});
+Route::get('/riwayat/makanan', function() {
+    return view('riwayat.makanan');
+});
+Route::get('/riwayat/mobil', function() {
+    return view('riwayat.mobil');
+});
+Route::get('/riwayat/guide', function() {
+    return view('riwayat.guide');
+});
+
 // Register
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
