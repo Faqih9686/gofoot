@@ -152,52 +152,65 @@
 </div>
 
   <!-- Keamanan -->
-  <div
-    x-show="tab === 'keamanan'"
-    x-transition
-    class="bg-white rounded-lg shadow p-6"
-    x-data="{ duaLangkah: true, notifikasiLogin: true }"
-  >
-    <h3 class="text-lg font-bold text-green-600 mb-4">Keamanan Akun</h3>
-    <form class="space-y-4">
+<div
+  x-show="tab === 'keamanan'"
+  x-transition
+  class="bg-white rounded-lg shadow p-6"
+  x-data="{
+    duaLangkah: {{ auth()->user()->dua_langkah ? 'true' : 'false' }},
+    notifikasiLogin: {{ auth()->user()->notifikasi_login ? 'true' : 'false' }}
+  }"
+>
+  <h3 class="text-lg font-bold text-green-600 mb-4">Keamanan Akun</h3>
+
+  <form method="POST" action="{{ route('profile.security.update') }}">
+    @csrf
+    @method('PUT')
+
+    <input type="hidden" name="dua_langkah" :value="duaLangkah">
+    <input type="hidden" name="notifikasi_login" :value="notifikasiLogin">
+
+    <div class="space-y-4">
+      <!-- Ganti Password (tidak aktif di sini, hanya placeholder) -->
       <div>
         <label class="sr-only">Ganti Password</label>
-        <input
-          type="password"
-          placeholder="Ganti password"
-          class="w-full border rounded px-3 py-2 text-sm"
-        />
+        <input type="password" placeholder="Ganti password (belum aktif)"
+               class="w-full border rounded px-3 py-2 text-sm bg-gray-100" disabled>
       </div>
+
+      <!-- 2FA -->
       <div class="flex items-center justify-between">
         <label class="text-sm">Autentikasi dua langkah (2FA)</label>
-        <button
-          type="button"
-          @click="duaLangkah = !duaLangkah"
-          :class="duaLangkah ? 'bg-green-500' : 'bg-gray-300'"
-          class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none"
-        >
-          <span
-            :class="duaLangkah ? 'translate-x-6' : 'translate-x-1'"
-            class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
-          ></span>
+        <button type="button"
+                @click="duaLangkah = !duaLangkah"
+                :class="duaLangkah ? 'bg-green-500' : 'bg-gray-300'"
+                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300">
+          <span :class="duaLangkah ? 'translate-x-6' : 'translate-x-1'"
+                class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"></span>
         </button>
       </div>
+
+      <!-- Notifikasi Login -->
       <div class="flex items-center justify-between">
         <label class="text-sm">Notifikasi login dari perangkat baru</label>
-        <button
-          type="button"
-          @click="notifikasiLogin = !notifikasiLogin"
-          :class="notifikasiLogin ? 'bg-green-500' : 'bg-gray-300'"
-          class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none"
-        >
-          <span
-            :class="notifikasiLogin ? 'translate-x-6' : 'translate-x-1'"
-            class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
-          ></span>
+        <button type="button"
+                @click="notifikasiLogin = !notifikasiLogin"
+                :class="notifikasiLogin ? 'bg-green-500' : 'bg-gray-300'"
+                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300">
+          <span :class="notifikasiLogin ? 'translate-x-6' : 'translate-x-1'"
+                class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"></span>
         </button>
       </div>
-    </form>
-  </div>
+
+      <div>
+        <button type="submit"
+                class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+          Simpan Perubahan
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 
   <!-- Riwayat -->
   <div x-show="tab === 'riwayat'" x-transition class="bg-white rounded-lg shadow p-6">
