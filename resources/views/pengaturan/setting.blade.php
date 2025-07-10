@@ -83,56 +83,72 @@
     
 
    <main class="md:col-span-3 space-y-4">
-  <!-- Profil -->
-        <div x-show="tab === 'profil'" class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-lg font-bold text-green-600 mb-4">Profil Saya</h3>
-            <!-- Form Profil -->
-  <div x-show="tab === 'profil'" x-transition class="bg-white rounded-lg shadow p-6">
-    <div class="flex justify-center mb-6">
-      <div class="relative">
-        <img src="{{ asset('images/user.png') }}" class="w-24 h-24 rounded-full border border-gray-300 object-cover" alt="Foto Profil">
-        <button class="absolute bottom-0 right-0 bg-green-500 text-white p-1 rounded-full hover:bg-green-600">
-  <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M30.8858 8.38226L35.618 13.1144M33.9281 4.21339L21.1264 17.0151C20.463 17.6741 20.0115 18.5163 19.8299 19.4337L18.6475 25.3528L24.5666 24.1681C25.4831 23.9848 26.3235 23.5355 26.9852 22.8738L39.7869 10.0722C40.1715 9.68746 40.4767 9.23077 40.6849 8.72814C40.8931 8.22552 41.0002 7.68681 41.0002 7.14277C41.0002 6.59874 40.8931 6.06003 40.6849 5.5574C40.4767 5.05478 40.1715 4.59808 39.7869 4.21339C39.4022 3.8287 38.9455 3.52354 38.4428 3.31535C37.9402 3.10716 37.4015 3 36.8575 3C36.3134 3 35.7747 3.10716 35.2721 3.31535C34.7695 3.52354 34.3128 3.8287 33.9281 4.21339Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M36.5298 29.8236V36.5296C36.5298 37.7153 36.0587 38.8524 35.2203 39.6908C34.3819 40.5292 33.2448 41.0002 32.0591 41.0002H7.47063C6.28495 41.0002 5.14782 40.5292 4.30942 39.6908C3.47101 38.8524 3 37.7153 3 36.5296V11.9411C3 10.7554 3.47101 9.61828 4.30942 8.77988C5.14782 7.94147 6.28495 7.47046 7.47063 7.47046H14.1766" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</button>
-      </div>
+ <!-- Profil -->
+<div x-show="tab === 'profil'" class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-lg font-bold text-green-600 mb-4">Profil Saya</h3>
+
+    <!-- Form Profil -->
+    <div x-show="tab === 'profil'" x-transition>
+        <div class="flex justify-center mb-6">
+            <div class="relative">
+                <img src="{{ asset('images/user.png') }}" class="w-24 h-24 rounded-full border border-gray-300 object-cover" alt="Foto Profil">
+                <button type="button" class="absolute bottom-0 right-0 bg-green-500 text-white p-1 rounded-full hover:bg-green-600">
+                    <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30.8858 8.38226L35.618 13.1144M33.9281 4.21339L21.1264 17.0151C20.463 17.6741 20.0115 18.5163 19.8299 19.4337L18.6475 25.3528L24.5666 24.1681C25.4831 23.9848 26.3235 23.5355 26.9852 22.8738L39.7869 10.0722C40.1715 9.68746 40.4767 9.23077 40.6849 8.72814C40.8931 8.22552 41.0002 7.68681 41.0002 7.14277C41.0002 6.59874 40.8931 6.06003 40.6849 5.5574C40.4767 5.05478 40.1715 4.59808 39.7869 4.21339C39.4022 3.8287 38.9455 3.52354 38.4428 3.31535C37.9402 3.10716 37.4015 3 36.8575 3C36.3134 3 35.7747 3.10716 35.2721 3.31535C34.7695 3.52354 34.3128 3.8287 33.9281 4.21339Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M36.5298 29.8236V36.5296C36.5298 37.7153 36.0587 38.8524 35.2203 39.6908C34.3819 40.5292 33.2448 41.0002 32.0591 41.0002H7.47063C6.28495 41.0002 5.14782 40.5292 4.30942 39.6908C3.47101 38.8524 3 37.7153 3 36.5296V11.9411C3 10.7554 3.47101 9.61828 4.30942 8.77988C5.14782 7.94147 6.28495 7.47046 7.47063 7.47046H14.1766" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <form method="POST" action="{{ route('profile.update') }}">
+            @csrf
+            @method('PUT')
+
+            <!-- Nama -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Nama</label>
+                <input type="text" name="name" class="w-full border rounded p-2 text-sm" value="{{ old('name', auth()->user()->name) }}" placeholder="Nama Lengkap">
+            </div>
+
+            <!-- Email -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" name="email" class="w-full border rounded p-2 text-sm" value="{{ old('email', auth()->user()->email) }}" placeholder="Email">
+            </div>
+
+            <!-- No Telepon -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Nomor Telepon</label>
+                <input type="text" name="phone" class="w-full border rounded p-2 text-sm" value="{{ old('phone', auth()->user()->phone) }}" placeholder="08xxxxxxxxxx">
+            </div>
+
+            <!-- Jenis Kelamin -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Jenis Kelamin</label>
+                <select name="gender" class="w-full border rounded p-2 text-sm">
+                    <option value="Laki-laki" {{ auth()->user()->gender == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                    <option value="Perempuan" {{ auth()->user()->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                </select>
+            </div>
+
+            <!-- Tanggal Lahir -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium mb-1">Tanggal Lahir</label>
+                <input type="date" name="birthdate" class="w-full border rounded p-2 text-sm" value="{{ old('birthdate', auth()->user()->birthdate) }}">
+            </div>
+
+            <!-- Tombol -->
+            <div class="flex space-x-2">
+                <button type="submit" class="bg-green-500 text-white font-semibold px-4 py-2 rounded hover:bg-green-600">
+                    Simpan
+                </button>
+                <button type="button" onclick="window.location.reload()" class="bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded hover:bg-gray-300">
+                    Batal
+                </button>
+            </div>
+        </form>
     </div>
-    <form class="space-y-4">
-      <div>
-        <label class="block text-sm font-medium">Nama</label>
-        <input type="text" class="w-full border rounded p-2 text-sm" placeholder="Nama Lengkap">
-      </div>
-      <div>
-        <label class="block text-sm font-medium">Email</label>
-        <input type="email" class="w-full border rounded p-2 text-sm" placeholder="Email">
-      </div>
-      <div>
-        <label class="block text-sm font-medium">No</label>
-        <input type="text" class="w-full border rounded p-2 text-sm" placeholder="Nomor Telepon">
-      </div>
-      <div>
-        <label class="block text-sm font-medium">Jenis Kelamin</label>
-        <select class="w-full border rounded p-2 text-sm">
-          <option>Laki-laki</option>
-          <option>Perempuan</option>
-        </select>
-      </div>
-      <div>
-        <label class="block text-sm font-medium">Tanggal Lahir</label>
-        <input type="date" class="w-full border rounded p-2 text-sm">
-      </div>
-      <div>
-        <button  type="submit"class="bg-green-500 text-white font-semibold px-4 py-2 rounded transition duration-150 ease-in-out hover:bg-green-600 active:bg-white active:text-green-600">
-          Simpan
-        </button>
-        <button  type="submit"class="bg-green-500 text-white font-semibold px-4 py-2 rounded transition duration-150 ease-in-out hover:bg-green-600 active:bg-white active:text-green-600">
-          Batal
-        </button>
-      </div>
-    </form>
-  </div>
 </div>
 
   <!-- Keamanan -->
