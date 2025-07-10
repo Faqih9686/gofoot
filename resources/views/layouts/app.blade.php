@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title', 'Gofood')</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
@@ -57,7 +56,44 @@
     <div class="flex flex-wrap items-center justify-center gap-2 mt-2 md:mt-0 md:justify-end text-white">
       
      <!-- Tombol Keranjang + Modal -->
-<div x-data="cartApp()" x-init="loadCart()" class="relative">
+<div x-data="{
+  showCart: false,
+  items: [
+    {
+      id: 1,
+      name: 'Mie Ayam Komplit',
+      harga: 18000,
+      jumlah: 1,
+      checked: true,
+      gambar: '/images/makanan 1.jpg',
+      pilihan: 'Mie Ayam Pangsit',
+      rating: 4.8,
+      terjual: 90
+    },
+    {
+      id: 2,
+      name: 'Sate Madura Ori',
+      harga: 22000,
+      jumlah: 1,
+      checked: true,
+      gambar: '/images/makanan 2.jpg',
+      pilihan: 'Sate Ayam Bumbu Kacang',
+      rating: 4.6,
+      terjual: 112
+    },
+    {
+      id: 3,
+      name: 'Ayam Geprek Lava',
+      harga: 25000,
+      jumlah: 1,
+      checked: true,
+      gambar: '/images/makanan 3.jpg',
+      pilihan: 'Level 5',
+      rating: 4.9,
+      terjual: 145
+    }
+  ]
+}" class="relative">
 
   <!-- Tombol Keranjang -->
   <button @click="showCart = true" class="p-2 bg-green-300 rounded-full">
@@ -67,18 +103,10 @@
     </svg>
   </button>
 
-  <!-- Contoh di dalam loop produk -->
-<div class="p-4 rounded-lg shadow bg-white space-y-2">
-  <img src="/images/makanan-1.jpg" alt="Makanan" class="w-full h-40 object-cover rounded-lg">
-  <h3 class="text-lg font-semibold">Mie Ayam Komplit</h3>
-  <p class="text-sm text-gray-500">Mie Ayam Pangsit</p>
-  <div class="flex justify-between items-center mt-2">
-    <span class="text-green-600 font-bold">Rp18.000</span>
-    <button @click="addToCart(1)" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
-      + Keranjang
-    </button>
-  </div>
-</div>
+  <!-- Modal Keranjang -->
+  <div x-show="showCart" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" x-cloak>
+    <div class="bg-white rounded-xl w-full max-w-4xl p-6 max-h-[90vh] overflow-y-auto relative">
+      <h2 class="text-xl font-bold text-green-600 mb-4">Keranjang Belanja</h2>
 
       <!-- Daftar Item -->
       <template x-for="item in items" :key="item.id">
@@ -197,8 +225,8 @@
           style="background-color: #92E3A9;"  
         >
           <button class="block w-full text-left hover:bg-gray-100 px-2 py-1 underline" @click="selectedLocation = 'Mekkah'; showLocations = false">Mekkah</button>
-          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1 underline" @click="selectedLocation = 'Mekkah'; showLocations = false">Madinah</button>
-          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1 underline" @click="selectedLocation = 'Mekkah'; showLocations = false">Jeddah</button>
+          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1 underline" @click="selectedLocation = 'Madinah'; showLocations = false">Madinah</button>
+          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1 underline" @click="selectedLocation = 'jeddah'; showLocations = false">Jeddah</button>
         </div>
       </div>
 
