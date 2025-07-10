@@ -83,7 +83,7 @@
     
 
    <main class="md:col-span-3 space-y-4">
- <!-- Profil -->
+  <!-- Profil -->
 <div x-show="tab === 'profil'" class="bg-white rounded-lg shadow p-6">
     <h3 class="text-lg font-bold text-green-600 mb-4">Profil Saya</h3>
 
