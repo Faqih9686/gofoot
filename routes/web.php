@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Mitra\MitraController;
+use App\Http\Controllers\Mitra\MembershipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,28 @@ Route::middleware('auth')->group(function () {
 // untuk API
 Route::get('/api/services/search', [ServiceController::class, 'search']);
 
+// Group route khusus role MITRA
+Route::middleware(['auth', 'mitra'])->prefix('mitra')->name('mitra.')->group(function () {
 
+    // Dashboard mitra (statistik total layanan, pesanan, ulasan, pendapatan)
+    Route::get('/dashboard', [MitraController::class, 'dashboard'])->name('dashboard');
 
+    // Manajemen layanan mitra
+    Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+    Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+    Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+    Route::put('/services/{id}', [ServiceController::class, 'update'])->name('services.update');
+    Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
 
+    // Pesanan masuk dan update status
+    Route::get('/orders', [MitraController::class, 'orders'])->name('orders.index');
+    Route::post('/orders/{id}/status', [MitraController::class, 'updateOrderStatus'])->name('orders.update-status');
+
+    // Laporan transaksi (pesanan selesai & sudah dibayar)
+    Route::get('/transactions', [MitraController::class, 'transactions'])->name('transactions.index');
+
+    // Membership: lihat & perpanjang
+    Route::get('/membership', [MembershipController::class, 'index'])->name('membership.index');
+    Route::post('/membership/renew', [MembershipController::class, 'renew'])->name('membership.renew');
+
+});

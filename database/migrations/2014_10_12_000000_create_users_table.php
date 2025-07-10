@@ -16,8 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('role', ['super_admin', 'admin', 'mitra'])->default('mitra');
+            $table->enum('role', ['customer', 'super_admin', 'admin', 'mitra'])->default('customer');
             $table->enum('member_status', ['non_member', 'member'])->default('non_member');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+
         });
     }
 
