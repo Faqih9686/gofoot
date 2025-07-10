@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title', 'Gofood')</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
@@ -54,15 +55,127 @@
 
     <!-- Tombol Kanan -->
     <div class="flex flex-wrap items-center justify-center gap-2 mt-2 md:mt-0 md:justify-end text-white">
-      <!-- Tombol Keranjang -->
-      <div class="relative">
-        <button class="p-2 bg-green-300 rounded-full">
-          <!-- Ikon Keranjang -->
-          <svg width="24" height="24" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M29.5901 16.25L30.0051 13.76C30.2757 12.131 30.4111 11.318 29.9768 10.784C29.544 10.25 28.7469 10.25 27.1541 10.25H5.10214C3.50937 10.25 2.71224 10.25 2.27946 10.784C1.84521 11.318 1.98203 12.131 2.25121 13.76L4.04178 24.53C4.63517 28.1 4.93112 29.8835 6.14317 30.9425C7.35374 32 9.0997 32 12.5916 32H16.1281M19.1025 26H31M25.0513 32V20M24.3077 10.25C24.3077 8.06196 23.4459 5.96354 21.9119 4.41637C20.378 2.86919 18.2975 2 16.1281 2C13.9588 2 11.8783 2.86919 10.3443 4.41637C8.81039 5.96354 7.94862 8.06196 7.94862 10.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+      
+     <!-- Tombol Keranjang + Modal -->
+<div x-data="cartApp()" x-init="loadCart()" class="relative">
+
+  <!-- Tombol Keranjang -->
+  <button @click="showCart = true" class="p-2 bg-green-300 rounded-full">
+    <!-- SVG Ikon Keranjang -->
+    <svg width="24" height="24" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M29.5901 16.25L30.0051 13.76C30.2757 12.131 30.4111 11.318 29.9768 10.784C29.544 10.25 28.7469 10.25 27.1541 10.25H5.10214C3.50937 10.25 2.71224 10.25 2.27946 10.784C1.84521 11.318 1.98203 12.131 2.25121 13.76L4.04178 24.53C4.63517 28.1 4.93112 29.8835 6.14317 30.9425C7.35374 32 9.0997 32 12.5916 32H16.1281M19.1025 26H31M25.0513 32V20M24.3077 10.25C24.3077 8.06196 23.4459 5.96354 21.9119 4.41637C20.378 2.86919 18.2975 2 16.1281 2C13.9588 2 11.8783 2.86919 10.3443 4.41637C8.81039 5.96354 7.94862 8.06196 7.94862 10.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Contoh di dalam loop produk -->
+<div class="p-4 rounded-lg shadow bg-white space-y-2">
+  <img src="/images/makanan-1.jpg" alt="Makanan" class="w-full h-40 object-cover rounded-lg">
+  <h3 class="text-lg font-semibold">Mie Ayam Komplit</h3>
+  <p class="text-sm text-gray-500">Mie Ayam Pangsit</p>
+  <div class="flex justify-between items-center mt-2">
+    <span class="text-green-600 font-bold">Rp18.000</span>
+    <button @click="addToCart(1)" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
+      + Keranjang
+    </button>
+  </div>
+</div>
+
+      <!-- Daftar Item -->
+      <template x-for="item in items" :key="item.id">
+        <div class="flex items-center justify-between border rounded-xl p-4 mb-4 shadow-sm">
+
+          <!-- Kiri -->
+          <div class="flex items-center space-x-4">
+            <!-- Checkbox Custom -->
+            <div @click="item.checked = !item.checked" class="w-6 h-6 cursor-pointer">
+              <template x-if="item.checked">
+                <svg width="24" height="24" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1.5" y="1.5" width="31" height="31" stroke="#35CD81" stroke-width="3"/>
+                  <path d="M24.78 7L29 11.22L13.44 26.8L5 18.35L9.22 14.13L13.44 18.35L24.78 7Z" fill="#35CD81"/>
+                </svg>
+              </template>
+              <template x-if="!item.checked">
+                <svg width="24" height="24" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1.5" y="1.5" width="31" height="31" stroke="#ccc" stroke-width="3"/>
+                </svg>
+              </template>
+            </div>
+
+            <!-- Gambar Otomatis -->
+             <div class="w-20 h-20 shrink-0">
+              <img :src="item.gambar" :alt="item.name" class="w-full h-full object-cover rounded-xl border">
+             </div>
+
+            <!-- Detail -->
+            <div class="max-w-[220px]">
+              <h3 class="font-semibold text-gray-800 line-clamp-1" x-text="item.name"></h3>
+              <p class="text-sm text-gray-500" x-text="`Pilihan: ${item.pilihan}`"></p>
+              <div class="flex items-center text-sm text-yellow-500 space-x-1">
+                <span x-text="`⭐ ${item.rating}`"></span>
+                <span class="text-gray-500" x-text="`| Terjual ${item.terjual}`"></span>
+              </div>
+              <a href="#" class="text-green-500 text-sm hover:underline">Lihat Detail</a>
+            </div>
+          </div>
+
+          <!-- Kanan -->
+          <div class="text-right space-y-2">
+            <div class="flex flex-col items-center space-y-1">
+              <span class="text-sm text-gray-600">Jumlah</span>
+              <div class="flex items-center space-x-2">
+                <button class="bg-green-200 px-2 py-1 rounded" @click="if(item.jumlah > 1) item.jumlah--">-</button>
+                <input type="number" min="1" class="w-14 text-center border rounded py-1 text-green-600"
+                       x-model.number="item.jumlah">
+                <button class="bg-green-200 px-2 py-1 rounded" @click="item.jumlah++">+</button>
+              </div>
+            </div>
+
+            <p class="font-semibold text-green-600" x-text="`Rp ${item.harga * item.jumlah}`"></p>
+            <div class="flex justify-end items-center space-x-2">
+              <button><i class="bi bi-heart text-green-500 text-lg"></i></button>
+              <button @click="items = items.filter(i => i.id !== item.id)">
+                <i class="bi bi-trash text-green-500 text-lg"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <!-- Footer -->
+      <div class="flex items-center justify-between mt-6 bg-green-500 text-white px-4 py-3 rounded-xl">
+        <div @click="let allChecked = items.every(i => i.checked); items.forEach(i => i.checked = !allChecked)" class="flex items-center space-x-2 cursor-pointer">
+          <template x-if="items.every(i => i.checked)">
+            <svg width="24" height="24" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1.5" y="1.5" width="31" height="31" stroke="#35CD81" stroke-width="3"/>
+              <path d="M24.78 7L29 11.22L13.44 26.8L5 18.35L9.22 14.13L13.44 18.35L24.78 7Z" fill="#35CD81"/>
+            </svg>
+          </template>
+          <template x-if="!items.every(i => i.checked)">
+            <svg width="24" height="24" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1.5" y="1.5" width="31" height="31" stroke="#ccc" stroke-width="3"/>
+            </svg>
+          </template>
+          <span class="font-semibold" x-text="`Pilih Semua (${items.filter(i => i.checked).length})`"></span>
+        </div>
+
+        <input type="text" placeholder="Gunakan voucher/promo..." class="rounded px-4 py-1 text-gray-700 w-1/3">
+
+        <div class="flex items-center space-x-6">
+          <span class="font-semibold text-white"
+                x-text="`Total: Rp ${items.reduce((t, i) => t + (i.checked ? i.harga * i.jumlah : 0), 0)}`">
+          </span>
+          <button  class="flex items-center space-x-1 bg-white px-4 py-2 rounded-full text-green-500 font-medium transform transition active:scale-90 active:bg-green-300 active:text-white"
+>
+            Checkout
+          </button>
+        </div>
       </div>
+
+      <!-- Tombol Close -->
+      <button @click="showCart = false" class="absolute top-4 right-4 text-gray-600 text-xl">✕</button>
+    </div>
+  </div>
+</div>
 
       <!-- Tombol Chat -->
       <div class="relative">
@@ -80,11 +193,12 @@
         <div 
           x-show="showLocations" 
           @click.away="showLocations = false" 
-          class="absolute mt-2 bg-white text-gray-800 rounded shadow p-2 space-y-1 z-10 w-32"
+          class="absolute mt-2 text-white rounded shadow p-2 space-y-1 z-10 w-32"
+          style="background-color: #92E3A9;"  
         >
-          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1" @click="selectedLocation = 'Mekkah'; showLocations = false">Mekkah</button>
-          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1" @click="selectedLocation = 'Madinah'; showLocations = false">Madinah</button>
-          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1" @click="selectedLocation = 'Jeddah'; showLocations = false">Jeddah</button>
+          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1 underline" @click="selectedLocation = 'Mekkah'; showLocations = false">Mekkah</button>
+          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1 underline" @click="selectedLocation = 'Mekkah'; showLocations = false">Madinah</button>
+          <button class="block w-full text-left hover:bg-gray-100 px-2 py-1 underline" @click="selectedLocation = 'Mekkah'; showLocations = false">Jeddah</button>
         </div>
       </div>
 
@@ -102,7 +216,7 @@
   x-show="showLogin"
   class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
 >
-  <div class="bg-green-300 rounded-2xl p-6 w-80 relative">
+ <div class="rounded-2xl p-6 w-80 relative" style="background-color: #35CD81;">
     <!-- Tombol Close -->
     <button
       @click="showLogin = false"
@@ -125,7 +239,6 @@
     <i class="bi bi-pencil-square"></i>
   </button>
 </div>
-
 
     <!-- Nama + Nomor -->
     <div class="text-center mb-4">
@@ -255,5 +368,61 @@
 
   </div>
 </footer>
+<script>
+function cartApp() {
+  return {
+    showCart: false,
+    items: [],
+
+    async loadCart() {
+      const res = await fetch('/cart');
+      const data = await res.json();
+      console.log('DATA CART:', data);
+
+      this.items = data.map(cart => ({
+        id: cart.id,
+        service_id: cart.service_id,
+        name: cart.service?.name || 'Produk',
+        harga: cart.service?.harga || 0,
+        jumlah: cart.quantity,
+        checked: true,
+        gambar: cart.service?.gambar || '/images/default.jpg',
+        pilihan: cart.service?.kategori || '',
+        rating: cart.service?.rating || 0,
+        terjual: cart.service?.terjual || 0
+      }));
+    },
+
+    async addToCart(serviceId, quantity = 1) {
+      const res = await fetch('/cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+          service_id: serviceId,
+          quantity: quantity
+        })
+      });
+
+      const result = await res.json();
+      console.log('Item ditambahkan ke cart:', result);
+      this.loadCart(); // refresh data cart
+    },
+
+    async deleteItem(cartId) {
+      await fetch(`/cart/${cartId}`, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+      });
+
+      this.items = this.items.filter(i => i.id !== cartId);
+    }
+  }
+}
+</script>
 </body>
 </html>
